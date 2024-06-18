@@ -8,9 +8,9 @@ HTML, CSS, JavaScript y Git
 
 # Integrantes:
 
-Shirley Gutierrez
-Diana Guzman
-Adriana Vargas
+Shirley Gutierrez,
+Diana Guzman,
+Adriana Vargas,
 Paola
 
 # Como probar la aplicación
