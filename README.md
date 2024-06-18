@@ -1,6 +1,6 @@
 # Encriptador CTC: Grupo 3
 
-Este encriptador esta hecho con un cifrado XOR
+Este encriptador esta hecho con una combinación de cifrado César y cifrado XOR
 
 # Tools
 
@@ -8,9 +8,9 @@ HTML, CSS, JavaScript y Git
 
 # Integrantes:
 
-Shirley Gutierrez
-Diana Guzman
-Adriana Vargas
+Shirley Gutierrez,
+Diana Guzman,
+Adriana Vargas,
 Paola
 
 # Como probar la aplicación
@@ -19,11 +19,11 @@ Paola
 2. Ingresa un número entero natural en el segundo cuadro de texto
 3. Click en 'Cifrar'
 
-La aplicación tomará los valores binarios de cada letra ingresada en el primer cuadro de texto y el valor binario del número que ingresaste como clave, utilizará estos valores binarios para hacer una operación XOR y encriptar tu mensaje, retornando un valor binario que, al convertirlo en decimal o hexadecimal este será un valor de un caracter en la tabla ASCII, retornando así un texto legible pero sin coherencia, este es el resultado de haber encriptado un mensaje con clave XOR.
-Para descifrarlo se deberá hacer el mismo procedimiento, tomando el valor binario de cada caracter del mensaje encriptado y el valor binario del número clave, realizando la operación XOR nos devolverá valores binarios que convirtiendo a hexadecimal o decimal será un caracter de la tabla ASCII que podemos interpretar, convirtiendo nuestro mensaje encriptado nuevamente a un mensae legible y comprensible.
+La aplicación tomará cada caracter ingresado en el primer cuadro de texto, y a cada uno lo desplazará n letras del abecedario inglés (n es el número ingresado como clave)
+Tomará los valores binarios de cada nueva letra y el valor binario de la clave, utilizará estos valores para hacer una operación XOR por cada caracter y así encriptar tu mensaje, retornando diferentes caracteres de la tabla ASCII, cuyos valores son el resultado de estas operaciones.
+Para descifrarlo se deberá hacer el mismo procedimiento, esta vez en vez de desplazar n letras del abecedario, serán n letras previas, realizando nuevamente operaciones XOR por cada caracter, y así convirtiendo nuestro mensaje encriptado nuevamente a un mensae legible y comprensible.
 
 # NOTA
 
-Es importante aclarar que al momento de encriptar un mensaje con una clave, es importante no cambiar la clave para decifrarlo, ya que si se cambia la clave y se quiere decifrar un mensaje encriptado, este no podrá hacerlo y devolverá otros caracteres diferentes a los que eran antes de encriptarse.
-
-Por lo tanto, la clave que se usó al encriptar debe ser la misma para poder decifrar sin problemas.
+Ingresar únicamente letras del abecedario inglés.
+La clave que se usó al encriptar debe ser la misma para poder decifrar sin problemas.
