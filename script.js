@@ -1,28 +1,38 @@
 
 let clave; 
+let textoOriginal;
+let textoCifrado;
+
 function obtenerClave() { 
-
-  clave = parseInt(document.getElementById('clave').value);
-   if (isNaN(clave)) { 
-    alert('Por favor ingresa una clave válida.'); 
-    return false; } return true; 
-  }
-
-  function habilitarBotones() {
-    let texto = document.getElementById('texto').value.trim();
-    let claveInput = document.getElementById('clave').value.trim();
-    let resultado = document.getElementById('resultado').value.trim();
-  
-    // Verificar si ambos campos tienen contenido y la clave es un número válido
-    if (texto !== '' && claveInput !== '' ) {
-      document.getElementById('cifrar').removeAttribute('disabled');
-     // document.getElementById('descifrar').removeAttribute('disabled');
-    } else if( claveInput !== '' && resultado !== '' ) {
-
-     // document.getElementById('cifrar').setAttribute('disabled', 'disabled');
-      document.getElementById('descifrar').removeAttribute('disabled');
+clave = parseInt(document.getElementById('clave').value);
+    if (isNaN(clave)) { 
+        alert('Por favor ingresa una clave válida.'); 
+        return false;
     }
-  }
+    return true; 
+}
+
+function cifradoCesar(letra, clave) {
+    if (letra >= 97 && letra <= 122) { // Caracteres minúsculos 'a'-'z'
+      return ((letra - 97 + clave) % 26) + 97;
+    }
+    return letra;
+}
+
+function habilitarBotones() {
+    textoOriginal = document.getElementById('texto').value.trim();
+    clave = parseInt(document.getElementById('clave').value.trim());
+    textoCifrado = document.getElementById('resultado').value.trim();
+  
+        // Verifica si hay texto y clave para cifrar
+    if (textoOriginal !== '' && clave !== '' ) {
+      document.getElementById('cifrar').removeAttribute('disabled'); //se habilita el boton cifrar
+    
+      // Verifica si hay clave y texto cifrado para descifrar
+    } else if( clave !== '' && textoCifrado !== '' ) {
+      document.getElementById('descifrar').removeAttribute('disabled'); //se habilita el boton descifrar
+    }
+}
 
 function cifrarTexto() {
   let textoOriginal = document.getElementById('texto').value.toLowerCase();
@@ -35,17 +45,15 @@ function cifrarTexto() {
   
     let textoCifrado = '';
      
-    // Cifrado César con clave y XOR
+    // Ciclo para cifrar caracter por caracter
     for (let i = 0; i < textoOriginal.length; i++) {
       let letra = textoOriginal.charCodeAt(i);  //su valor en ascci de la letra en posicion i
   
       // Cifrado César con clave
-      if (letra >= 97 && letra <= 122) { // Caracteres minúsculos 'a'-'z'
-        letra = ((letra - 97 + clave) % 26) + 97;  
-      }
+      letra = cifradoCesar(letra, clave);  //la letra avanza 'clave' letras del abecedario
   
       // XOR con clave
-      letra = letra ^ clave;  //0110 1010    //104  en bin  0110 1000
+      letra = letra ^ clave;  //realiza la operacion XOR con los valores binarios de la letra y clave
   
      textoCifrado += String.fromCharCode(letra);  //reemplaza el valor ascii por la letra correspondiente y lo concatenamos
     }
@@ -54,7 +62,7 @@ function cifrarTexto() {
   }
   
   function descifrarTexto() {
-    let textoCifrado = document.getElementById('resultado').value.toLowerCase();
+    textoCifrado = document.getElementById('resultado').value.toLowerCase();
     if (!obtenerClave()) return;
     if (textoCifrado === '') {
       alert('Por favor ingresa un texto cifrado y una clave válida.');
@@ -63,19 +71,17 @@ function cifrarTexto() {
   
     let textoDescifrado = '';
   
-    // Descifrado XOR con clave y César
+    // Ciclo para cifrar caracter por caracter
     for (let i = 0; i < textoCifrado.length; i++) {
-      let charCode = textoCifrado.charCodeAt(i);
+      let letra = textoCifrado.charCodeAt(i);
   
       // XOR con clave
-      charCode = charCode ^ clave;
+      letra = letra ^ clave; //realiza la operacion XOR con los valores binarios de la letra y clave
   
       // Descifrado César con clave
-      if (charCode >= 97 && charCode <= 122) { // Caracteres minúsculos 'a'-'z'
-        charCode = ((charCode - 97 - clave + 26) % 26) + 97;
-      }
+      letra = cifradoCesar(letra, - clave + 26); //-clave para poder obtener la letra original
   
-      textoDescifrado += String.fromCharCode(charCode);
+      textoDescifrado += String.fromCharCode(letra);
     }
   
     document.getElementById('texto').value = textoDescifrado;
