@@ -14,17 +14,17 @@
     <div class="container">
       <h1>Cifrado César con clave y XOR</h1>
       <label for="texto">Texto:</label><br />
-      <textarea id="texto" rows="5"></textarea><br />
+      <textarea id="texto" rows="5" oninput="habilitarBotones()"></textarea><br />
       <label for="clave">Clave (número entero para César y XOR):</label><br />
-      <input type="number" id="clave" required /><br /><br />
-      <button class="button-index" id="cifrar" onclick="cifrarTexto()">
+      <input type="number" id="clave" required oninput="habilitarBotones()"/><br /><br />
+      <button class="button-index" id="cifrar" onclick="cifrarTexto()" disabled>
         Cifrar
       </button>
-      <button class="button-index" id="descifrar" onclick="descifrarTexto()">
+      <button class="button-index" id="descifrar" onclick="descifrarTexto()" disabled>
         Descifrar</button
       ><br /><br />
       <label for="resultado">Resultado:</label><br />
-      <textarea id="resultado" rows="5" readonly></textarea>
+      <textarea id="resultado" rows="5" oninput="habilitarBotones()"readonly></textarea>
     </div>
 
     <script src="script.js"></script>
