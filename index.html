@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cifrado César con clave y XOR</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -13,8 +17,12 @@
       <textarea id="texto" rows="5"></textarea><br />
       <label for="clave">Clave (número entero para César y XOR):</label><br />
       <input type="number" id="clave" required /><br /><br />
-      <button onclick="cifrarTexto()">Cifrar</button>
-      <button onclick="descifrarTexto()">Descifrar</button><br /><br />
+      <button class="button-index" id="cifrar" onclick="cifrarTexto()">
+        Cifrar
+      </button>
+      <button class="button-index" id="descifrar" onclick="descifrarTexto()">
+        Descifrar</button
+      ><br /><br />
       <label for="resultado">Resultado:</label><br />
       <textarea id="resultado" rows="5" readonly></textarea>
     </div>
