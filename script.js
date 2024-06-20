@@ -20,9 +20,9 @@ function cifradoCesar(letra, clave) {
 }
 
 function habilitarBotones() {
-    textoOriginal = document.getElementById('texto').value.trim();
-    clave = parseInt(document.getElementById('clave').value.trim());
-    textoCifrado = document.getElementById('resultado').value.trim();
+    textoOriginal = document.getElementById('texto').value;
+    clave = document.getElementById('clave').value;
+    textoCifrado = document.getElementById('resultado').value;
   
         // Verifica si hay texto y clave para cifrar
     if (textoOriginal !== '' && clave !== '' ) {
@@ -64,11 +64,7 @@ function cifrarTexto() {
   function descifrarTexto() {
     textoCifrado = document.getElementById('resultado').value.toLowerCase();
     if (!obtenerClave()) return;
-    if (textoCifrado === '') {
-      alert('Por favor ingresa un texto cifrado y una clave válida.');
-      return;
-    }
-  
+      
     let textoDescifrado = '';
   
     // Ciclo para cifrar caracter por caracter
